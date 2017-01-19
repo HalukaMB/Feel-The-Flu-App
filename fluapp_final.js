@@ -154,7 +154,7 @@ function searchOECDcountry(countrylongcode, agerisk) {
         var avgwage = Math.round(avgrawwage).toFixed(2)
         document.getElementById("result3").innerHTML = avgwage+" Dollars"
     });
-    var url2 = "http://stats.oecd.org/SDMX-JSON/data/AV_AN_WAGE/" + countrylongcode + ".CPNCU+CNPNCU+USDPPP+USDEX/all?startTime=2000&endTime=2015&dimensionAtObservation=allDimensions&pid=48a42b9a-ef88-4ae2-8f01-27622f456dcd"
+    var url2 = "https://stats.oecd.org/SDMX-JSON/data/AV_AN_WAGE/" + countrylongcode + ".CPNCU+CNPNCU+USDPPP+USDEX/all?startTime=2000&endTime=2015&dimensionAtObservation=allDimensions&pid=48a42b9a-ef88-4ae2-8f01-27622f456dcd"
     console.log(url2);
     xhttp2.open("GET", url2);
     xhttp2.send();
@@ -193,7 +193,7 @@ function HistoricalDates(lng, lat, search_term) {
                 HistoricalWeather(lat, lng, year_0, year_1, year_2, year_3, search_term)
             })
         //This is the actual timezone API call.
-        var currenttimeconvertURL = "http://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=haluka"
+        var currenttimeconvertURL = "https://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=haluka"
         console.log(currenttimeconvertURL);
         xhttpcurrenttimeconvert.open("GET", currenttimeconvertURL);
         xhttpcurrenttimeconvert.send();
@@ -227,7 +227,7 @@ function HistoricalWeather(lat, lnt, year_0, year_1, year_2, year_3, search_term
 
     });
     //This is the call of the API for historical weather data with lng, lat and the date
-    var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_1 + "/q/" + lat + "," + lnt + ".json"
+    var urlweather = "https://api.wunderground.com/api/76aa53af8c201071/history_" + year_1 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
     xhttp1.open("GET", urlweather);
     xhttp1.send();
@@ -248,7 +248,7 @@ function HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_ter
       }console.log(Histhum1, Histhum2);
         HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histhum2)
     });
-    var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_2 + "/q/" + lat + "," + lnt + ".json"
+    var urlweather = "https://api.wunderground.com/api/76aa53af8c201071/history_" + year_2 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
     xhttp2.open("GET", urlweather);
     xhttp2.send();
@@ -275,7 +275,7 @@ function HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_ter
         //with the search_term to compare current and past humidity. This is function III.2c)
         HistoricalWeather_final(lat, lnt, year_0, avgHistHum)
     });
-    var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_3 + "/q/" + lat + "," + lnt + ".json"
+    var urlweather = "https://api.wunderground.com/api/76aa53af8c201071/history_" + year_3 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
     xhttp2.open("GET", urlweather);
     xhttp2.send();
@@ -309,7 +309,7 @@ function HistoricalWeather_final(lat, lnt, year_0, avgHistHum) {
         console.log(humidity, temperature, avgHistHum);
         absolutehum(humidity, temperature, avgHistHum)
     });
-    var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_0 + "/q/" + lat + "," + lnt + ".json"
+    var urlweather = "https://api.wunderground.com/api/76aa53af8c201071/history_" + year_0 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
     xhttp2.open("GET", urlweather);
     xhttp2.send();
