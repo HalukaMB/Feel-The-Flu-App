@@ -1,0 +1,344 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
+  License: none (public domain) BUT WITHOUT A RESET for ITALIC, BOLD, UNDERLINED
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* Now we can start with the actual styling. */
+
+@font-face {
+    font-family: "MyFont";
+    src: url("assets/fonts/Cambay/Cambay-Regular.ttf");
+  }
+
+@font-face {font-family: "Numbers";
+  src: url("assets/fonts/Anonymous_Pro/AnonymousPro-Regular.ttf");
+}
+
+body {
+    background-color: #DCDCDC;
+    font: 300 100%/150% "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100vw;
+
+}
+
+
+/* Setting all part of the website on the same width */
+header, section, aside, footer {
+    margin-left: 0%;
+    margin-right: 0%;
+    background-color: #D3F1F3;
+    width: 84vw;
+    align-items: center;
+}
+
+
+
+/* Setting the header to a responseive height as well as margin and padding */
+header {
+    display: flex;
+    height: 18vh;
+    background-color: #D3F1F3;
+    justify-content: space-around;
+    width: 87vw;
+    margin-left: 5vw;
+    padding-left: 3vw;
+}
+
+
+h1 {
+    font-family: "MyFont";
+    display: flex;
+    height: 16vh;
+    width: 40vh;
+    font-size: 8vh;
+    line-height: 8vh;
+    background-color: #D3F1F3;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+/* Making sure that the logos have always the same size */
+
+.logo {
+    height: 15vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+/* Same width, padding and margin as the header */
+
+.content {
+    margin-left: 5vw;
+    margin-right: 7vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 84vw;
+    text-align: left;
+    background-color: white;
+}
+
+/* Setting the trafficlights to grey for the status before the API requests*/
+.trafficlight {
+    height: 30px;
+    width: 30px;
+    background-color: #EEEEEE;
+    border-radius: 15px;
+    border-style: outset;
+    border-color: black;
+    border-width: 1px;
+}
+
+/* Defining the traffic lights for the different colours */
+.trafficlightred {
+    height: 30px;
+    width: 30px;
+    background-color: #ED6348;
+    border-radius: 15px;
+    border-width: 1px;
+}
+
+.trafficlightyellow {
+    height: 30px;
+    width: 30px;
+    background-color: #F2C164;
+    border-radius: 15px;
+    border-width: 1px;
+}
+
+.trafficlightblue {
+    height: 30px;
+    width: 30px;
+    background-color: #85CFCE;
+    border-radius: 15px;
+    border-width: 1px;
+}
+
+/* Before the request, the results section is not shown */
+
+.outputBefore {
+    display: none;
+}
+
+/* After the request, the results section is shown */
+
+.outputAfter {
+    display: block;
+    margin-top: 3vw;
+    padding-top: 3vh;
+    border-top: 1px;
+    border-color: black;
+    border-style: solid;
+    margin-right: 3vw;
+}
+
+/* Styling of the dropdown button */
+.dropbtn {
+    background-color: #F2C164;
+    color: white;
+    height:14.5vh;
+    width: 14.5vh;
+    border-radius: 50%;
+    font-size: 4vh;
+
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    padding-left: 2vw;
+    padding-right: 0;
+    position: relative;
+    display: inline-block;
+    width:17vh;
+
+
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+/*Styling of h2 and h3*/
+h2 {  font-family: "MyFont";
+      font-size: 4.5vh;
+      align-items:  flex-start;
+      padding-top: 5vh;
+      padding-bottom: 1vh;
+  }
+h3{   font-family: "MyFont";
+      padding-top: 4vh;
+      padding-bottom: 1vh;
+      font-size: 3.5vh;
+      align-items:  flex-start;
+  }
+
+  /*Finalresultshidden hides the HTML elements for the final results box */
+.finalresultshidden{
+  display: none;
+}
+
+/*Finalresultshidden shows the HTML elements for the final results box */
+.finalresultsshown{
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-between;
+  align-items: flex-start;
+  margin-top: 4vh;
+  padding-top: 3vh;
+  padding-bottom:3vh;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  margin-bottom: 2vh;
+}
+
+/* Logo and h2 slightly adjusted to better fit into the box*/
+
+.finalresultsshown h2{
+  padding-top: 1vh;
+}
+
+.resultslogo {
+    height: 20vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+    margin-bottom: 5%;
+}
+
+/* Defining the scale element in which the color code is explained*/
+
+.scale{
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-between;
+
+}
+
+
+.scaleitems{
+  display: block;
+  padding-right: 0.5vw;
+}
+
+/* Different ids are given to each of the elements in which red, yellow and blue is displayed for the risk categories age, working environment, city*/
+
+#agelight{
+  height: 30px;
+  width: 30px;
+  display: block;
+
+}
+
+#distancelight{
+  height: 30px;
+  width: 30px;
+  display: block;
+}
+
+#locallight{
+  height: 30px;
+  width: 30px;
+  display: block;
+}
+
+/* Giving the calculated economic risk a mathematic look*/
+
+#result3{
+  font-size: 4vh;
+  font-family: "Numbers";
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+/* Defining the single results display also in flex.box style*/
+
+.singleresults{
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-between;
+  align-items: flex-start;
+
+}
+
+.singleresultsitem{
+  display: block;
+  padding-right: 0.5vw;
+}
+
+.contentboxitem{
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
