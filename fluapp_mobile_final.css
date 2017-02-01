@@ -359,3 +359,20 @@ h3{   font-family: "MyFont";
   padding-left: 2vw;
   padding-right: 2vw;
 }
+.socials{
+  width:30px;
+  height:30px;
+  padding:20px;
+}
+
+.aboutbox{
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-between;
+  align-items: flex-start;
+  margin-top: 4vh;
+  padding-top: 3vh;
+  padding-bottom:3vh;
+  border-width: 2px;
+  margin-bottom:
+}

@@ -214,16 +214,36 @@ function HistoricalWeather(lat, lnt, year_0, year_1, year_2, year_3, search_term
     xhttp1.addEventListener("load", function() {
         //Here the humidity data is stored in variable Histhum1 and then passed on to the next function.
         var HistoricalWeatherresponse = JSON.parse(this.response);
+        var indexa1 = parseInt(String(this.response).indexOf("hum")) + 4
+        var indexa2 = parseInt(String(this.response).indexOf("hum")) + 5
         var index1 = parseInt(String(this.response).indexOf("hum")) + 6
         var index2 = parseInt(String(this.response).indexOf("hum")) + 7
         var index3 = parseInt(String(this.response).indexOf("hum")) + 8
+        if (String(this.response)[index2] == ","){
+          console.log("WARNING!");
+        }
         if (String(this.response)[index3] == 0){var Histhum1 = parseInt(String(this.response)[index1] + String(this.response)[index2] + String(this.response)[index3])
         }else{
         var Histhum1 = parseInt(String(this.response)[index1] + String(this.response)[index2])
         }
         console.log(Histhum1);
-
-        HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1)
+        var index4 = parseInt(String(this.response).indexOf("tempm")) + 8
+        var index5 = parseInt(String(this.response).indexOf("tempm")) + 9
+        var index6 = parseInt(String(this.response).indexOf("tempm")) + 10
+        var index7 = parseInt(String(this.response).indexOf("tempm")) + 11
+        console.log(index1, index2, index3)
+        console.log(index4, index5, index6, index7)
+        if (String(this.response)[index5] == "."){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index6])))
+        }
+        if (String(this.response)[index4] == "-" && String(this.response)[index6] == NaN){var temperature = 0.1*parseInt(((String(this.response)[index4] + String(this.response)[index5])))
+        }
+        if (String(this.response)[index4] == "-" && String(this.response)[index6] != NaN){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index5]+ String(this.response)[index6])))
+        }
+        else{
+        var temperature = parseInt((((String(this.response)[index4]) + String(this.response)[index5] +(String(this.response)[index6]))))
+        }
+        var Histtemp1=temperature
+        HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histtemp1)
 
     });
     //This is the call of the API for historical weather data with lng, lat and the date
@@ -234,7 +254,7 @@ function HistoricalWeather(lat, lnt, year_0, year_1, year_2, year_3, search_term
 }
 
 //Same thing happens here again just for year_2
-function HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1) {
+function HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1,Histtemp1) {
     console.log(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1)
     console.log("This should load the weather2");
     var xhttp2 = new XMLHttpRequest();
@@ -246,7 +266,23 @@ function HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_ter
       }else{
       var Histhum2 = parseInt(String(this.response)[index1] + String(this.response)[index2])
       }console.log(Histhum1, Histhum2);
-        HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histhum2)
+      var index4 = parseInt(String(this.response).indexOf("tempm")) + 8
+      var index5 = parseInt(String(this.response).indexOf("tempm")) + 9
+      var index6 = parseInt(String(this.response).indexOf("tempm")) + 10
+      var index7 = parseInt(String(this.response).indexOf("tempm")) + 11
+      console.log(index1, index2, index3)
+      console.log(index4, index5, index6, index7)
+      if (String(this.response)[index5] == "."){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index6])))
+      }
+      if (String(this.response)[index4] == "-" && String(this.response)[index6] == NaN){var temperature = 0.1*parseInt(((String(this.response)[index4] + String(this.response)[index5])))
+      }
+      if (String(this.response)[index4] == "-" && String(this.response)[index6] != NaN){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index5]+ String(this.response)[index6])))
+      }
+      else{
+      var temperature = parseInt((((String(this.response)[index4]) + String(this.response)[index5] +(String(this.response)[index6]))))
+      }
+      var Histtemp2=temperature
+        HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histhum2, Histtemp1, Histtemp2)
     });
     var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_2 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
@@ -255,7 +291,7 @@ function HistoricalWeather2(lat, lnt, year_0, year_1, year_2, year_3, search_ter
 }
 
 //Same thing happens here again just for year_3
-function HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histhum2) {
+function HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histhum2, Histtemp1, Histtemp2) {
     console.log(lat, lnt, year_0, year_1, year_2, year_3, search_term, Histhum1, Histhum2)
     console.log("This should load the weather2");
     var xhttp2 = new XMLHttpRequest();
@@ -269,11 +305,30 @@ function HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_ter
         var Histhum3 = parseInt(String(this.response)[index1] + String(this.response)[index2])
         }console.log(search_term, Histhum1, Histhum2, Histhum3);
         //Now, the three humidity values are used to calculate an average
+        
         var avgHistHum = (Histhum1 + Histhum2 + Histhum3) / 3
         console.log(avgHistHum)
+        var index4 = parseInt(String(this.response).indexOf("tempm")) + 8
+        var index5 = parseInt(String(this.response).indexOf("tempm")) + 9
+        var index6 = parseInt(String(this.response).indexOf("tempm")) + 10
+        var index7 = parseInt(String(this.response).indexOf("tempm")) + 11
+        console.log(index1, index2, index3)
+        console.log(index4, index5, index6, index7)
+        if (String(this.response)[index5] == "."){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index6])))
+        }
+        if (String(this.response)[index4] == "-" && String(this.response)[index6] == NaN){var temperature = 0.1*parseInt(((String(this.response)[index4] + String(this.response)[index5])))
+        }
+        if (String(this.response)[index4] == "-" && String(this.response)[index6] != NaN){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index5]+ String(this.response)[index6])))
+        }
+        else{
+        var temperature = parseInt((((String(this.response)[index4]) + String(this.response)[index5] +(String(this.response)[index6]))))
+        }
+        var Histtemp3=temperature
+
+        var avgHistTemp = (Histtemp1 + Histtemp2 + Histtemp3) / 3
         //This average for the humidity is now passed on to another function together
         //with the search_term to compare current and past humidity. This is function III.2c)
-        HistoricalWeather_final(lat, lnt, year_0, avgHistHum)
+        HistoricalWeather_final(lat, lnt, year_0, avgHistHum, avgHistTemp )
     });
     var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_3 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
@@ -282,7 +337,7 @@ function HistoricalWeather3(lat, lnt, year_0, year_1, year_2, year_3, search_ter
 }
 
 //Same thing happens here again just for year_0
-function HistoricalWeather_final(lat, lnt, year_0, avgHistHum) {
+function HistoricalWeather_final(lat, lnt, year_0, avgHistHum, avgHistTemp) {
     console.log(lat, lnt, year_0, avgHistHum)
     console.log("This should load the weather0");
     var xhttp2 = new XMLHttpRequest();
@@ -303,12 +358,17 @@ function HistoricalWeather_final(lat, lnt, year_0, avgHistHum) {
         var index7 = parseInt(String(this.response).indexOf("tempm")) + 11
         console.log(index1, index2, index3)
         console.log(index4, index5, index6, index7)
-        if (String(this.response)[index6] == "."){var temperature = (parseInt((String(this.response)[index4] + String(this.response)[index5] + String(this.response)[index7])))
-        }else{
-        var temperature = ((parseInt((String(this.response)[index4]) + (String(this.response)[index6]))))/10
+        if (String(this.response)[index5] == "."){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index6])))
         }
-        console.log(humidity, temperature, avgHistHum);
-        absolutehum(humidity, temperature, avgHistHum)
+        if (String(this.response)[index4] == "-" && String(this.response)[index6] == NaN){var temperature = 0.1*parseInt(((String(this.response)[index4] + String(this.response)[index5])))
+        }
+        if (String(this.response)[index4] == "-" && String(this.response)[index6] != NaN){var temperature = parseInt(((String(this.response)[index4] + String(this.response)[index5]+ String(this.response)[index6])))
+        }
+        else{
+        var temperature = parseInt((((String(this.response)[index4]) + String(this.response)[index5] +(String(this.response)[index6]))))
+        }
+        console.log(humidity, temperature, avgHistHum, avgHistTemp );
+        absolutehum(humidity, temperature, avgHistHum, avgHistTemp )
     });
     var urlweather = "http://api.wunderground.com/api/76aa53af8c201071/history_" + year_0 + "/q/" + lat + "," + lnt + ".json"
     console.log(urlweather);
@@ -319,12 +379,12 @@ function HistoricalWeather_final(lat, lnt, year_0, avgHistHum) {
 //First, this function retrieves data about the current humidity and temperature.
 
 
-function absolutehum(rh, Temp, avgHistHum) {
+function absolutehum(rh, Temp, avgHistHum, avgHistTemp) {
   //These function now convert the relative humidity into absolute humidity
   //Please note that there is a small mistake in this function as the current Temperature is
   //also used as the reference for the historical average humidity data
     var ah = (6.112 * Math.exp((17.67 * Temp) / (Temp + 243.5)) * rh * 2.1674) / (273.15 + Temp)
-    var nh = (6.112 * Math.exp((17.67 * Temp) / (Temp + 243.5)) * avgHistHum * 2.1674) / (273.15 + Temp)
+    var nh = (6.112 * Math.exp((17.67 * avgHistTemp) / (avgHistTemp + 243.5)) * avgHistHum * 2.1674) / (273.15 + avgHistTemp)
     var dh = (6.112 * Math.exp((17.67 * Temp) / (Temp + 243.5)) * 1 * 2.1674) / (273.15 + Temp)
     //This ratio finally tells us how exceptionally low the humidity of today is compared to the humidity of the last years.
     var ratio = (ah / dh - nh / dh)

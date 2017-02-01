@@ -15,6 +15,7 @@
             <div id="myDropdown" class="dropdown-content">
                 <a href="index.html">HOME</a>
                 <a href="about.html">ABOUT</a>
+                <a href="http://maier-borst.de/wp/">MAIER-BORST</a>
             </div>
         </div>
         <img class="logo" src="assets/logo/soup.png">
@@ -25,7 +26,7 @@
     <!---This is the middle block that asks for input and explains how this web application works-->
     <div class="content">
         <h2>What is this?</h2>
-        <p> This Web Application is designed to provide you with information about your personal risk of getting the flu. But in order to calculate your risk, we need some basic information about yourself.</p>
+        <p> This Web Application is a first proof of concept. It is designed to provide you with information about your personal risk of getting the flu. But in order to calculate your risk, this app needs some basic information about yourself.</p>
 
         <h3> Your age </h3>
         <div class="input">
@@ -59,21 +60,21 @@
             <h2>So what does your risk look like?</h2>
             <!---This is the calculation of the financial risk related to the flu. If the city is not based in an OECD country the text within the div tags is displayed-->
             <div id="result3">Sorry, your city is not based in an OECD-country.</div>
-            <p>This is the price tag on your flu risk. </p>
-            <h3>But how did we calculate that?</h3>
-            <p>First of all, this depends on two factors. Your age and the average wage in your country. The average wage is calculated by using most recent OECD data on the annual average wage and dividing it by 365 days. This is the price for one day of
-                productivity being lost. </p>
+            <p>This is the price tag on your flu risk. If you get the flu, this is the minimum amount of money it will cost you.</p>
+            <h3>But how did the app calculate this?</h3>
+            <p>First of all, this is a calculation based on two factors: Your age and the average wage in your country. The average wage is calculated by using most recent OECD data on the annual average wage and dividing it by 365 days. This is the price for one day of
+                productivity being lost, if you are ill. </p>
             <br>
-            <p>Then we look at your age. When people out of the age group of 0 to 4 and for the age group over 65 years get sick, this results in a loss of productivity of at least one day. If they are in between 5 and 64, this is different. The baseline
-                risk is half a day lost of productivity. So the age is an important factor in terms of the financial risk.</p>
+            <p>Then the app looks at your age. When people out of the age group of 0 to 4 or out of the age group of over 65 years get sick, this results in a loss of productivity of at least one day. However, if they are in between 5 and 64, this is different. People in this age span tend to recover more quickly.
+              The baseline risk is therefore half a day lost in terms productivity. So the age is an important factor in terms of the financial risk.</p>
             <br>
-            <p><i><b>BUT WAIT?!? How can a toddler or a retired person mean a loss of productivity. They should not be working.</b></i> </p>
+            <p><i><b>BUT WAIT?!? How can a toddler or a retired person mean a loss of productivity? They should not be working.</b></i> </p>
             <br>
-            <p>Well, that is a fair question to ask. But the reason that their flu still causes costs is that the family has to take care of them. So even if the infected person is not working, this still means a loss of productivity.</p>
+            <p>Well, that is a fair question to ask. But the reason why their flu still causes costs is that the family has to take care of them. So even if the infected person is not working, this still means a loss of productivity. All these calculations are based on a study by <a href="http://www.sciencedirect.com/science/article/pii/S0264410X07003854">Molinari et al.</a>  </p>
 
             <h3>Now, let's look on your risk factors. </h3>
             <!---This is the section in which the color code is explained-->
-            <p>The colour code we used for rating your risk is simple and functions as follows </p>
+            <p>The colour code the app uses for rating your risk is simple and functions as follows: </p>
             <div class=scale>
                 <div class=scaleitems>
                     <div class=trafficlightblue></div>
@@ -109,8 +110,8 @@
                     <div id=agelight class="trafficlight"></div>
                 </div>
                 <div class="singleresultsitem">
-                    <p>To calculate this risk, we used again this study by <a href="http://www.sciencedirect.com/science/article/pii/S0264410X07003854">Molinari et al.</a> which gives a value for the attack risk for each of the age groups. 0 to 4 years old
-                        have the highest risk. 5 to 17 and 65 plus have a mid-level risk and people with an age between 18 to 64 years have the lowest attack risk.</p>
+                    <p>To calculate this risk, I used again this study by <a href="http://www.sciencedirect.com/science/article/pii/S0264410X07003854">Molinari et al.</a> which gives a value for the attack risk for each of the age groups. 0 to 4 years old
+                        have the highest risk. 5 to 17 and 65 plus have a mid-level risk of getting the flu and people with an age between 18 to 64 years have the lowest attack risk.</p>
                 </div>
             </div>
             <h3>Your risk based on your working environment</h3>
@@ -120,10 +121,11 @@
                     <div id=distancelight class="trafficlight"></div>
                 </div>
                 <div class="singleresultsitem">
-                    <p>Numbers differ regarding the distance that aerosols can travel after a sneeze. While generally it is said that the distance is about one to two meters, there are however also examples of droplets travelling even 8 meters in certain
-                        environments
-                        <a href="http://www.nature.com/news/the-snot-spattered-experiments-that-show-how-far-sneezes-really-spread-1.19996">Uargh!</a> Here we take the data from a study by <a href="http://jid.oxfordjournals.org/content/early/2013/01/29/infdis.jis773.abstract"> Bischoff et al.</a>                        which found aerosols even at a distance of 1.8 meters away from the sneezing patient and hence set the threshold between red and yellow risk level at a distance of 1.6 meter. The threshold between yellow and blue was set to a distance
-                        of 2.30 meters.</p>
+                    <p>Numbers differ regarding the distance that aerosols can travel after a sneeze. While generally it is said that the distance is about one to two meters, there are also examples of droplets travelling even 8 meters under certain
+                        conditions.
+                        <a href="http://www.nature.com/news/the-snot-spattered-experiments-that-show-how-far-sneezes-really-spread-1.19996">Uargh!!!</a> Here, the app is based on data from a study by <a href="http://jid.oxfordjournals.org/content/early/2013/01/29/infdis.jis773.abstract"> Bischoff et al.</a>,
+                        which found aerosols even at a distance of 1.8 meters away from a sneezing patient. The threshold between red and yellow risk is therefore set at a distance of 1.6 meter. The threshold between yellow and blue was set to a distance
+                        of 2.3 meters.</p>
                 </div>
             </div>
             <h3>Your risk based on city that you live in</h3>
@@ -132,14 +134,14 @@
                     <div id=locallight class="trafficlight"></div>
                 </div>
                 <div class="singleresultsitem">
-                    <p>This one was the trickiest. A lot of the data is only available to certain countries or areas, or the quality of the data differs greatly between countries. Hence, another approach was chosen.
-                        <a href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000316">This study by Shaman et al.</a> showed that there is a correlation between unusually low absolute humidity and outbreaks of flu. Hence, humidity
-                        data for your city of today is compared to the average humidity for the same day in the three previous years. Depending on how much this value differs, the flu risk based on location is classified as blue, yellow or red.
+                    <p>This one is the trickiest. A lot of geobased data on influenza is only available for certain countries or areas, or the quality of the data differs greatly between countries. Hence, another approach was chosen.
+                        <a href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000316">This study by Shaman et al.</a> showed that there is a correlation between unusually low absolute humidity and outbreaks of flu.
+                        This app therefore compares current humidity data for your city to the average humidity for the same day in the three previous years. Depending on how much it is drier than in the previous years, the flu risk is classified as blue, yellow or red.
                     </p>
                 </div>
             </div>
             <h2>The overall result</h2>
-            <p>Finally, let us look at the overall result for your flu risk: </p>
+            <p>Finally, let's look at the overall result for your flu risk: </p>
             <!---This is the section in which the overall risk is displayed. The different outcomes are coded in this HTML but only shown when the Javascript
           changes the class to "finalresultsshown"-->
             <div id="finalresultsgrey" class="finalresultsshown">
@@ -163,7 +165,7 @@
                 </div>
                 <div class="contentboxitem">
                     <h2>Keep your guard up</h2>
-                    <p>Your risk of getting the flu is fairly acceptable. However, there are some indicators telling us that you should be cautious. Keep tissues around you and get enough rest so that your immune system is strong enough.</p>
+                    <p>Your risk of getting the flu is fairly acceptable. However, there are some indicators telling you to be cautious. Keep tissues around you and get enough rest so that your immune system is strong enough to fight the flu.</p>
                 </div>
             </div>
             <div id="finalresultsblue" class="finalresultshidden">
@@ -172,8 +174,8 @@
                 </div>
                 <div class="contentboxitem">
                     <h2>You should be safe</h2>
-                    <p>Never say never, but the chance of you getting the flu right now is low. Your area does not seem to be a hotspot for the flu and also you are not in an environment or an age group that point at a high risk. Get some vitamins every
-                        now and then and it should be alright. </p>
+                    <p>Never say never, but the chance of you getting the flu right now is low. Your area does not seem to be a hotspot for the flu and also you are not in an environment or an age group that has a high risk level. Get some vitamins every
+                        now and then and you should be alright. </p>
                 </div>
             </div>
         </div>
@@ -183,7 +185,7 @@
 
     </div>
 
-    <script src="fluapp_final.js"></script>
+    <script src="fluapp_final3.js"></script>
 
 
 
