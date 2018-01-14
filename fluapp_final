@@ -193,7 +193,7 @@ function HistoricalDates(lng, lat, search_term) {
                 HistoricalWeather(lat, lng, year_0, year_1, year_2, year_3, search_term)
             })
         //This is the actual timezone API call.
-        var currenttimeconvertURL = "https://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=haluka"
+        var currenttimeconvertURL = "http://api.geonames.org/timezoneJSON?lat=" + lat + "&lng=" + lng + "&username=haluka"
         console.log(currenttimeconvertURL);
         xhttpcurrenttimeconvert.open("GET", currenttimeconvertURL);
         xhttpcurrenttimeconvert.send();
